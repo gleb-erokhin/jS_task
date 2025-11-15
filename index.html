@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <script src="index.js"></script>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="form-container">
+            <label for="name">
+                Имя
+                <input type="text" id="name">
+            </label>
+            <label for="age">
+                Возраст
+                <input type="text" id="age">
+            </label>
+            <label for="subs">
+                Пожписка
+                <input type="text" id="subs">
+            </label>
+            <label for="time">
+                Время входа
+                <input type="text" id="time">
+            </label>
+        </div>
+        <p id="output"></p>
+        <button id="submit-btn">Отправить</button>
+
+        <script src="index.js"></script>
+    </body>
+
 </html>

@@ -3,6 +3,29 @@ const age = 17
 const subscription = 'free'
 const lastLogin = 5
 
+const $name = document.querySelector('#name')
+const $age = document.querySelector('#age')
+const $subscription = document.querySelector('#subscription')
+const $lastLogin = document.querySelector('#lastLogin')
+const $p = document.querySelector('#output')
+// Кнопка отправки
+const submitButton = document.getElementById('submit-btn');
+
+// Назначаем обработчик на кнопку
+submitButton.addEventListener('click', () => {
+    const currentValue = $name.value;
+    displayUserInfo(currentValue)
+});
+
+// $name.addEventListener('input', function (event) {
+//     // Забираем текущее значение
+//     const currentValue = event.target.value;
+//     // Выводим его куда-то (например, в параграф)
+//     // document.getElementById('output').innerText = `Введено: "${currentValue}"`;
+// });
+
+console.log($name)
+
 function checkStrictType(value) {
     if (typeof value === 'number') {
         if ((Number.isFinite(value))) {
