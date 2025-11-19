@@ -10,6 +10,14 @@ function completeTask(task) {
     }
 }
 
+function deleteTask(task) {
+    if (task.length !== 0) {
+        return task = ''
+    } else {
+        return `"Задача отсутствует"`
+    }
+}
+
 function showTask(task) {
     if (task.length === 0) {
         // return `"Задача отсутствует"`
@@ -36,6 +44,16 @@ showTask(task)
 let add2 = setTask('заварить кофе')
 showTask(add2)
 task = completeTask(add2)
+showTask(task)
+
+let add3 = setTask('сделать омлет')
+showTask(add3)
+task = deleteTask(add3)
+showTask(task)
+
+let add4 = setTask('одеться')
+showTask(add4)
+task = completeTask(add4)
 showTask(task)
 
 console.log('completedTaskCount:', completedTaskCount)
