@@ -6,7 +6,7 @@ function completeTask(task) {
         completedTaskCount++
         return task = ''
     } else {
-        return `"Задача отсутствует"`
+        return `Выполнено: "Задача отсутствует"`
     }
 }
 
@@ -14,14 +14,14 @@ function deleteTask(task) {
     if (task.length !== 0) {
         return task = ''
     } else {
-        return `"Задача отсутствует"`
+        return `Удаление: "Задача отсутствует"`
     }
 }
 
 function showTask(task) {
     if (task.length === 0) {
         // return `"Задача отсутствует"`
-        console.log("Задача отсутствует")
+        console.log("Состояние: Задача отсутствует")
     } else {
         // return task
         console.log('task status:', task)
@@ -54,6 +54,11 @@ showTask(task)
 let add4 = setTask('одеться')
 showTask(add4)
 task = completeTask(add4)
+showTask(task)
+
+let add5 = setTask('')
+showTask(add5)
+task = completeTask(add5)
 showTask(task)
 
 console.log('completedTaskCount:', completedTaskCount)
