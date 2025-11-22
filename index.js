@@ -24,7 +24,7 @@ function showTask(task) {
         console.log("Состояние: Задача отсутствует")
     } else {
         // return task
-        console.log('task status:', task)
+        console.log('show task:', task)
     }
 }   
 
@@ -36,29 +36,29 @@ function setTask(taskDescription) {
     }
 }
 
-let add = setTask('почистить зубы')
-showTask(add)
-task = completeTask(add)
+task = setTask('почистить зубы')
+showTask(task)
+task = completeTask(task)
 showTask(task)
 
-let add2 = setTask('заварить кофе')
-showTask(add2)
-task = completeTask(add2)
+task = setTask('заварить кофе')
+showTask(task)
+task = completeTask(task)
 showTask(task)
 
-let add3 = setTask('сделать омлет')
-showTask(add3)
-task = deleteTask(add3)
+task = setTask('сделать омлет')
+showTask(task)
+task = deleteTask(task)
 showTask(task)
 
-let add4 = setTask('одеться')
-showTask(add4)
-task = completeTask(add4)
+task = setTask('одеться')
+showTask(task)
+task = completeTask(task)
 showTask(task)
 
-let add5 = setTask('')
-showTask(add5)
-task = completeTask(add5)
+task = setTask('')
+showTask(task)
+task = completeTask(task)
 showTask(task)
 
 console.log('completedTaskCount:', completedTaskCount)
