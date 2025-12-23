@@ -93,15 +93,20 @@ obj2 = obj1
 // ========== Копировние объекта ========== 
 const userProfile = {
     name: 'Bob',
-    age: 17
+    age: 17,
+    adress: {
+        street: 'Avenu laine',
+        number: 45
+    }
 }
 
-// так как при присваивании мы создаем новую ссылку на один и тот же объект, мы меняем свойства только в одном обекте, но через 2 перменные
-// так как они ссылаются на один и тот же объект
-const copy = userProfile
+// объект скопирован, но вложеный объект был не затронут и на него скопирована только ссылка.
+const copy = Object.assign({}, userProfile)
 userProfile.age = 19
+copy.adress.number = 50
 
 // console.log(userProfile)
+// console.log(copy)
 
 // ========== Вложенные объекты ========== 
 const employee = {
