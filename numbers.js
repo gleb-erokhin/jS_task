@@ -157,9 +157,9 @@ function isSafeInteger(num) {
     throw new Error('Указано не число')
 }
 
-console.log(isSafeInteger(9007199254740991));  // true
-console.log(isSafeInteger(9007199254740992));  // false
-console.log(isSafeInteger(1.5));  // false
+// console.log(isSafeInteger(9007199254740991));  // true
+// console.log(isSafeInteger(9007199254740992));  // false
+// console.log(isSafeInteger(1.5));  // false
 
 // квадратные корень
 function getPowers(num) {
