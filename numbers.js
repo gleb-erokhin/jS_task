@@ -142,7 +142,7 @@ function formatCurrency(value, currency = "USD") {
 // Проверка на четность
 function isEven(num) {
     // Ваш код здесь
-    return (num % 2 === 0) ? true : false
+    return num % 2 === 0
 }
 
 // console.log('isEven:', isEven(4)); // true
@@ -151,13 +151,15 @@ function isEven(num) {
 // Безопасные числа
 function isSafeInteger(num) {
     // Ваш код здесь
-    return num >= Number.MIN_SAFE_INTEGER &&
-        num <= Number.MAX_SAFE_INTEGER &&
-        Number.isInteger(num);
+    if (Number.isInteger(num)) {
+        return Number.isSafeInteger(num)
+    }
+    throw new Error('Указано не число')
 }
 
-// console.log(isSafeInteger(9007199254740991));  // true
-// console.log(isSafeInteger(9007199254740992));  // false
+console.log(isSafeInteger(9007199254740991));  // true
+console.log(isSafeInteger(9007199254740992));  // false
+console.log(isSafeInteger(1.5));  // false
 
 // квадратные корень
 function getPowers(num) {
