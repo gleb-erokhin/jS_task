@@ -4,3 +4,4 @@ index.html для отображения кода.
 1. Числа numbers.js
 2. Строки string.js
 3. Обьекты object.js
+4. Методы объектов methods.js
