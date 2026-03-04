@@ -40,7 +40,7 @@ console.log(dateDifference("2025-10-12T12:00", "2025-10-17T15:30"));
 
 /** Тренировка */
 // форматированный вывод даты, сначала в лоб, а потом упростил
-function getDate(date) {
+function formatDate(date) {
     let result = ''
     // result = date.getDate() < 10
     //     ? '0' + date.getDate() + '.'
