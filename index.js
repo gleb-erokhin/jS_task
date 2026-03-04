@@ -1,5 +1,16 @@
-let task = ''
+let tasks = []
 let completedTaskCount = 0
+
+/**
+ * const task = {
+    title: "Купить продукты",
+    description: "Молоко, хлеб, яйца",
+    isCompleted: false,
+    createdDate: new Date(),
+    completedDate: null
+};
+ */
+
 
 function completeTask(task) {
     if (task.length !== 0) {
@@ -18,47 +29,33 @@ function deleteTask(task) {
     }
 }
 
-function showTask(task) {
-    if (task.length === 0) {
+function showTask(tasks) {
+    if (tasks.length === 0) {
         // return `"Задача отсутствует"`
         console.log("Состояние: Задача отсутствует")
     } else {
-        // return task
-        console.log('show task:', task)
+        tasks.forEach((task, index) => {
+            console.log(`Задача ${index + 1}:`);
+            Object.entries(task).forEach(([key, value]) => {
+                console.log(`${key}: ${value}`);
+            });
+        });
     }
 }   
 
-function setTask(taskDescription) {
-    if (task.length !== 0) {
-        return `"Не могу добавить задачу, завершите или удалите предыдущую"`
-    } else {
-        return task = taskDescription;
-    }
+function setTask(title, description) {
+    task = {
+        title,
+        description,
+        isCompleted: false,
+        createdDate: new Date(),
+        completedDate: null
+    };
+    tasks.push(task)
 }
 
-task = setTask('почистить зубы')
-showTask(task)
-task = completeTask(task)
-showTask(task)
-
-task = setTask('заварить кофе')
-showTask(task)
-task = completeTask(task)
-showTask(task)
-
-task = setTask('сделать омлет')
-showTask(task)
-task = deleteTask(task)
-showTask(task)
-
-task = setTask('одеться')
-showTask(task)
-task = completeTask(task)
-showTask(task)
-
-task = setTask('')
-showTask(task)
-task = completeTask(task)
-showTask(task)
-
-console.log('completedTaskCount:', completedTaskCount)
+setTask('Купить', 'хлеб')
+setTask('зарядка', 'в 7 утра3')
+setTask('сварить', 'кофе')
+console.log(tasks)
+showTask(tasks)
