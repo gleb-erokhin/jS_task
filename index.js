@@ -26,17 +26,21 @@ function completeTask(tasks, index) {
     }
 }
 // разобарться с delete
-function deleteTask(task, index) {
-    if (tasks.length !== 0) {
-        return task = ''
-    } else {
-        if (isCompleted === false) {
-            return 'Таска еще не выполнена'
+function deleteTask(index) {
+    const task = tasks[index]; // получаем нужный объект из массива
+
+    if (!task) return tasks; // проверяем на ошибку передачи индекса, если задачи нет ничего не делать и вернуть массив
+
+    if (task.isCompleted) {
+        const answer = confirm(`Задача ${index} выполнена. Удалить?`);
+
+        if (!answer) {
+            console.log(`Удаление задачи ${index} отменено`);
         } else {
-            tasks.splice(index, 1)
+            console.log(`Удаление задачи ${index} выполнено`);
         }
-        // return `Удаление: "Задача отсутствует"`
     }
+    tasks.splice(index, 1);
 }
 
 function showTask(tasks, name = 'Задача') {
@@ -45,7 +49,7 @@ function showTask(tasks, name = 'Задача') {
         console.log("Состояние: Задача отсутствует")
     } else {
         tasks.forEach((task, index) => {
-            console.log(`${name} ${index + 1}:`);
+            console.log(`${name} ${index}:`);
             Object.entries(task).forEach(([key, value]) => {
                 console.log(`${key}: ${value}`);
             });
@@ -53,7 +57,7 @@ function showTask(tasks, name = 'Задача') {
     }
 }
 
-function setTask(title, description, isCompleted = false, completedDate = null) {
+function setTask(title, description, isCompleted = false, completedDate = false) {
     task = {
         title,
         description,
@@ -71,10 +75,16 @@ setTask('сварить', 'кофе')
 completeTask(tasks, 1)
 completeTask(tasks, 0)
 
-deleteTask(tasks, 1)
-deleteTask(tasks, 0)
+deleteTask(1)
+deleteTask(0)
+
+showTask(completedTasks, 'Задача завершена')
+console.log('')
+console.log('Выводим массив tasks')
 
 showTask(tasks)
-showTask(completedTasks, 'Задача завершена')
+
+console.log('')
+console.log('Выводим количество завершенных задач')
 console.log('completedTaskCount:', completedTaskCount)
-console.log('completedTasks:', completedTasks)
+console.log('Выводим массив completedTasks:', completedTasks)
