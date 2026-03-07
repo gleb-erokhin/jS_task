@@ -25,7 +25,7 @@ function completeTask(tasks, index) {
         return `Выполнено: "Задача отсутствует"`
     }
 }
-// разобарться с delete
+
 function deleteTask(index) {
     const task = tasks[index]; // получаем нужный объект из массива
 
@@ -38,9 +38,9 @@ function deleteTask(index) {
             console.log(`Удаление задачи ${index} отменено`);
         } else {
             console.log(`Удаление задачи ${index} выполнено`);
+            tasks.splice(index, 1);
         }
     }
-    tasks.splice(index, 1);
 }
 
 function showTask(tasks, name = 'Задача') {
@@ -55,6 +55,10 @@ function showTask(tasks, name = 'Задача') {
             });
         });
     }
+}
+
+function clearTasks(tasks) {
+    console.log(tasks.length = 0) 
 }
 
 function setTask(title, description, isCompleted = false, completedDate = false) {
@@ -72,19 +76,24 @@ setTask('Купить', 'хлеб')
 setTask('зарядка', 'в 7 утра3')
 setTask('сварить', 'кофе')
 
+completeTask(tasks, 2)
 completeTask(tasks, 1)
 completeTask(tasks, 0)
 
 deleteTask(1)
 deleteTask(0)
+deleteTask(0)
 
 showTask(completedTasks, 'Задача завершена')
 console.log('')
 console.log('Выводим массив tasks')
-
 showTask(tasks)
+
+clearTasks(tasks)
 
 console.log('')
 console.log('Выводим количество завершенных задач')
 console.log('completedTaskCount:', completedTaskCount)
 console.log('Выводим массив completedTasks:', completedTasks)
+
+console.log('Удалить все задачи')
