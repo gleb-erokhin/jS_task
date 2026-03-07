@@ -13,8 +13,10 @@ let completedTaskCount = 0
  */
 
 
-function completeTask(tasks, index) {
-    if (tasks.length !== 0) {
+function completeTask(id) {
+    const index = tasks.findIndex(task => task.id === id);
+    // console.log('index find id', index, task.id)
+    if (index !== -1) {
         let currentTask = tasks[index]
         currentTask.isCompleted = true
         currentTask.completedDate = new Date()
@@ -26,18 +28,19 @@ function completeTask(tasks, index) {
     }
 }
 
-function deleteTask(index) {
+function deleteTask(id) {
+    const index = tasks.findIndex(task => task.id === id);
     const task = tasks[index]; // получаем нужный объект из массива
 
     if (!task) return tasks; // проверяем на ошибку передачи индекса, если задачи нет ничего не делать и вернуть массив
 
     if (task.isCompleted) {
-        const answer = confirm(`Задача ${index} выполнена. Удалить?`);
+        const answer = confirm(`Задача ${task.id} выполнена. Удалить?`);
 
         if (!answer) {
-            console.log(`Удаление задачи ${index} отменено`);
+            console.log(`Удаление задачи ${task.id} отменено`);
         } else {
-            console.log(`Удаление задачи ${index} выполнено`);
+            console.log(`Удаление задачи ${task.id} выполнено`);
             tasks.splice(index, 1);
         }
     }
@@ -48,21 +51,23 @@ function showTask(tasks, name = 'Задача') {
         // return `"Задача отсутствует"`
         console.log("Состояние: Задача отсутствует")
     } else {
-        tasks.forEach((task, index) => {
-            console.log(`${name} ${index}:`);
+        tasks.forEach((task) => {
+            console.log(`${name} id ${task.id}:`);
             Object.entries(task).forEach(([key, value]) => {
                 console.log(`${key}: ${value}`);
             });
+            console.log('')
         });
     }
 }
 
 function clearTasks(tasks) {
-    console.log(tasks.length = 0) 
+    tasks.length = 0
 }
 
-function setTask(title, description, isCompleted = false, completedDate = false) {
+function setTask(id, title, description, isCompleted = false, completedDate = false) {
     task = {
+        id,
         title,
         description,
         isCompleted,
@@ -72,28 +77,34 @@ function setTask(title, description, isCompleted = false, completedDate = false)
     tasks.push(task)
 }
 
-setTask('Купить', 'хлеб')
-setTask('зарядка', 'в 7 утра3')
-setTask('сварить', 'кофе')
+setTask(1, 'Купить', 'хлеб')
+setTask(2 ,'зарядка', 'в 7 утра3')
+setTask(3, 'сварить', 'кофе')
 
-completeTask(tasks, 2)
-completeTask(tasks, 1)
-completeTask(tasks, 0)
+completeTask(3)
+completeTask(2)
+// completeTask(1)
 
-deleteTask(1)
-deleteTask(0)
-deleteTask(0)
 
-showTask(completedTasks, 'Задача завершена')
+// deleteTask(3)
+// deleteTask(2)
+// deleteTask(1)
+
 console.log('')
-console.log('Выводим массив tasks')
+console.log("выводим массив с новыми задачами")
+
+console.log('') // раскоментировать чтобы очистить весь массив task, закоментировать delete, тогда он удалит все задачи
+// clearTasks(tasks)
 showTask(tasks)
 
-clearTasks(tasks)
+console.log('')
+console.log('Выводим массив завершенные задачи')
+showTask(completedTasks, 'Задача завершена')
+
 
 console.log('')
 console.log('Выводим количество завершенных задач')
 console.log('completedTaskCount:', completedTaskCount)
 console.log('Выводим массив completedTasks:', completedTasks)
 
-console.log('Удалить все задачи')
+// console.log('Удалить все задачи')
