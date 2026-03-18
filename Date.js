@@ -34,7 +34,7 @@ function dateDifference(date1, date2) {
     return {days, hours, minute}
 }
 
-console.log(dateDifference("2025-10-12T12:00", "2025-10-17T15:30"));
+// console.log(dateDifference("2025-10-12T12:00", "2025-10-17T15:30"));
 // ожидаемый результат: объект с days, hours, minutes
 
 

@@ -111,5 +111,5 @@ let user14 = {
     methodArrow: () => { console.log("arrow:", this.name); }
 };
 
-user14.methodRegular(); // в strict / обычном режиме this = user, а this.name = regular: Carol
-user14.methodArrow(); // ?
+// user14.methodRegular(); // в strict / обычном режиме this = user, а this.name = regular: Carol
+// user14.methodArrow(); // ?
