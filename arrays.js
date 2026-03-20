@@ -1,5 +1,6 @@
 console.log('Задание 1 - базовый досутп к элементам')
 let fruits = ["apple", "banana", "orange"];
+console.log(fruits)
 // Вывести первый и последний элемент
 // Изменить второй элемент на "grape" и вывести весь массив
 console.log(fruits[0])
@@ -8,9 +9,10 @@ console.log(fruits.at(-1))
 console.log(' ')
 console.log('Задание 2 - длинна массива')
 let numbers = [10, 20, 30];
+console.log(numbers)
 // Вывести длину
 numbers[5] = 50;
-console.log('длинна массива:', numbers.length)
+console.log('длинна массива после добавления numbers[5] = 50:', numbers.length)
 // Вывести массив и длину
 numbers.length = 3;
 console.log('длинна после усечения', numbers.length)
@@ -130,3 +132,65 @@ console.log(`shallow: ${shallow}`)
 // Объяснить, какие изменения отразились и почему
 console.log('Оригинальный массив получил на 2 позииции 200 потому что был передан в переменную присваиванием, а значит это просто ссылка на объект в памяти массива original')
 console.log('новый массив в переменной shallow получается посредством оператора spred он добавил значения массива оригинал и создал новый массив.')
+
+console.log(' ')
+console.log('Дополнительные задания')
+console.log('Задание 1 - создание массива')
+const numbers1 = [10, 20, 30, 40, 50]
+const fruits1 = ['apple', 'orange', 'banana']
+console.log(numbers1, fruits1)
+
+console.log(' ')
+console.log('Задание 2 - Доступ к элементам массива')
+console.log('первый элемент массива:', fruits1[0])
+console.log('последний элемент массива:', fruits1.at(-1))
+console.log('первый элемент массива:', fruits1[5])
+console.log('при выборе индекса за границами массива получим undefined')
+
+console.log(' ')
+console.log('Задание 3 - Проверка длинны массива')
+const colors = ['red', 'green', 'blue']
+console.log(colors)
+console.log('длинна массива', colors.length)
+colors[5] = 'orange'
+console.log(colors)
+console.log('длинна массива', colors.length)
+
+console.log(' ')
+console.log('Задание 4 - Изменения свойства length')
+const letters = ['a', 'b', 'c', 'd', 'e']
+letters.length = 3
+console.log('усечение массива до 3:', letters)
+letters.length = 6
+console.log('усечение массива до 6:', letters)
+console.log('установка длинны массива 3 обрезает массив и отрезанные значения удаляются')
+console.log('установка длинны массива 6 добавляет в массив пустые значения, такой способ является нежелательным, не рекомендуется создавать массивы с пустыми значениями')
+
+console.log(' ')
+console.log('Задание 5 - Удаление элементов массива')
+const pet = ['dog', 'cat', 'panda']
+delete pet[1]
+console.log(`Массив [${pet}], длинна массива: ${pet.length}`)
+delete pet[4]
+console.log(pet)
+console.log('оператор delete при удалении элемента за границей массива никак не повлияет на массив, ошибок не будет')
+
+console.log(' ')
+console.log('Задание 6 - Создание массива и добавление элементов')
+const task = []
+task[0] = 'do jim'
+task[1] = 'do shower'
+task[2] = 'go to work'
+console.log(task)
+
+console.log(' ')
+console.log('Задание 7 - Проверка элементов массива')
+const mixeds = ['one', true, 1, {a: 1}, false]
+console.log(mixeds[0])
+console.log(mixeds[1])
+console.log(mixeds[2])
+console.log(mixeds[3])
+console.log(mixeds[4])
+console.log('отрицательный индекс', mixeds[-5])
+console.log('Отрицательные индексы не соответствуют основной структуре массивов, они начинаются с 0 и идут на возрастание, в связи с этим получаем indefined')
+console.log('Для использования отрицательного индекса с ecma(2022) используется метод .at(-1)')
