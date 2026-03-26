@@ -173,3 +173,56 @@ const obj4 = {
 }
 
 // console.log(obj3.id === obj4.id)
+
+// ========== вложенные объекты и массивы ==========
+const company = {
+    name: 'Vova',
+    adress: {city: 'Moscow', zip: 33333333},
+    employees: [
+        {name: 'Anna', role: 'Dev'},
+        {name: 'Jhon', role: 'prog'}
+    ]
+}
+
+console.log(company.adress.city)
+console.log(company.employees[0].name)
+console.log(company.employees[1].role)
+
+let a = { value: 1 };
+let b = a;
+b.value = 100;
+console.log(a.value); // ?
+
+let o1 = { x: 10 };
+let o2 = { x: 10 };
+let o3 = o1;
+
+console.log(o1 === o2); // ?
+console.log(o1 === o3); // ?
+
+let original2 = { a: 1, nested: { b: 2 } };
+let copy2 = { ...original2 };
+
+copy2.a = 10;
+copy2.nested.b = 20;
+
+console.log(original2.a);        // ?
+console.log(original2.nested.b); // ?
+
+const realCP = JSON.parse(JSON.stringify(original2))
+realCP.nested.b = 33
+
+console.log(realCP)
+console.log(original2)
+
+const json = JSON.stringify(original2)
+console.log(typeof json, json)
+
+const newJSONobj = JSON.parse(json)
+console.log(typeof newJSONobj, newJSONobj)
+
+console.log(typeof {})
+console.log(typeof [])
+console.log(typeof null)
+console.log(typeof 'text')
+console.log(typeof 111)
