@@ -113,3 +113,21 @@ let user14 = {
 
 // user14.methodRegular(); // в strict / обычном режиме this = user, а this.name = regular: Carol
 // user14.methodArrow(); // ?
+
+// ================== разобрать что будет выведено ======================
+
+// 7. конструкторы
+function User(name) {
+    this.name = name;
+    this.say = function () { console.log(this.name); };
+}
+
+let u1 = new User("Dave");
+let sayFn = u1.say;
+
+// u1.say() // равен новому объекту 
+// sayFn() // ?
+// User.say() // ?
+
+
+

@@ -1,4 +1,5 @@
-/** 1 Количество дней до указанной даты */
+console.log(' ======== 1. Количество дней до указанной даты ======== ')
+console.log(' ')
 function daysUntil(date) {
     const now = Date.now(); // берем текущую дату в timestamp
     const future = new Date(date).getTime(); // создаем новый экземпляр класса с датой в переменной, получаем timestamp
@@ -8,10 +9,12 @@ function daysUntil(date) {
     return Math.ceil(diff / (1000 * 60 * 60 * 24)); // переводим милисекунды и округляем вверх, так как день считается уже начавшимся
 }
 
-// console.log(daysUntil("2026-03-10") + " дней"); 
+console.log(daysUntil("2026-03-30") + " дней");
 // ожидаемый результат: количество дней
 
-/** 2. Разница между двумя датами */
+console.log(' ')
+console.log(' ======== 2. Разница между двумя датами ======== ')
+console.log(' ')
 function dateDifference(date1, date2) {
     // получаем значения timestamp и вычисляем разницу
     let start = new Date(date1).getTime()
@@ -22,6 +25,7 @@ function dateDifference(date1, date2) {
     const dayMs = 24 * 60 * 60 * 1000;
     const hourMs = 60 * 60 * 1000;
     const minuteMs = 60 * 1000;
+    const secondsMS = 60;
 
     // вычисляем значения через остаток от деления
     const days = Math.floor(ms / dayMs)
@@ -30,16 +34,17 @@ function dateDifference(date1, date2) {
     ms %= hourMs
     const minute = Math.floor(ms / minuteMs)
     ms %= minuteMs
+    const second = Math.floor(ms / secondsMS)
+    
 
-    return {days, hours, minute}
+    return { days, hours, minute, second }
 }
 
-// console.log(dateDifference("2025-10-12T12:00", "2025-10-17T15:30"));
+console.log(dateDifference("2025-10-12T12:00:15", "2025-10-17T15:30:25"));
 // ожидаемый результат: объект с days, hours, minutes
 
-
-/** Тренировка */
-// форматированный вывод даты, сначала в лоб, а потом упростил
+// ======== 6. форматированный вывод даты ======== 
+// сначала в лоб, а потом упростил
 function formatDate(date) {
     let result = ''
     // result = date.getDate() < 10
@@ -61,8 +66,8 @@ function formatDate(date) {
     return result
 }
 
-// let date = new Date("2019-10-2")
-// console.log(getDate(date))
+let date = new Date("2019-10-2")
+// console.log(formatDate(date))
 
 // установить дату
 let setsDate = new Date("2017-10-2")
@@ -82,4 +87,26 @@ let finish = Date.now()
 // сравнение даты
 let date1 = new Date('11.06.2017')
 let date2 = new Date('12.06.2017')
-// console.log(date1.getTime() == date2.getTime) 
+// console.log(date1.getTime() == date2.getTime)
+
+// ======== количество дней до 1 января нового года
+function daysToNewYear(date) {
+    let currentDay = Date.now()
+    let newYear = new Date(date).getTime()
+    let res = newYear - currentDay
+    res = Math.floor(res / (24 * 60 * 60 * 1000))
+    return res
+}
+// console.log(daysToNewYear('2027-01-01T12:00'));
+
+// ======== Таймер обратного отсчета ========
+function countdown(targetDate) {
+    let today = Date.now()
+    let target = new Date(targetDate).getTime()
+    console.log(dateDifference(today, target))
+
+    // console.log(`сегодня ${today}, цель ${target}, разница ${res}`)
+}
+
+// console.log(countdown(new Date('2026-03-29')))
+// countdown('2026-03-30')
