@@ -56,7 +56,7 @@ console.log(' ')
 console.log('Задание 6 - разные типы элементов')
 let mixed = [1, "text", true, null, { a: 1 }, [2, 3]];
 // Вывести каждый элемент через console.log с указанием его типа
-mixed.forEach(function(index) {
+mixed.forEach(function (index) {
     console.log(`Тип: '${typeof index}: значение: ${index}`)
 })
 
@@ -185,7 +185,7 @@ console.log(task)
 
 console.log(' ')
 console.log('Задание 7 - Проверка элементов массива')
-const mixeds = ['one', true, 1, {a: 1}, false]
+const mixeds = ['one', true, 1, { a: 1 }, false]
 console.log(mixeds[0])
 console.log(mixeds[1])
 console.log(mixeds[2])
@@ -194,3 +194,29 @@ console.log(mixeds[4])
 console.log('отрицательный индекс', mixeds[-5])
 console.log('Отрицательные индексы не соответствуют основной структуре массивов, они начинаются с 0 и идут на возрастание, в связи с этим получаем indefined')
 console.log('Для использования отрицательного индекса с ecma(2022) используется метод .at(-1)')
+
+console.log(' ')
+console.log('Задание 8 - Перебор масива через циклы')
+let numbers2 = [10, 20, 30, 40, 50];
+
+// Задание 1: вывести все элементы через for
+for (let i = 0; i < numbers2.length; i++) {
+    const element = numbers2[i];
+    console.log('через for', element)
+}
+// Задание 2: вывести все элементы через for...of
+for (const element of numbers2) {
+    console.log('через for...of', element)
+}
+// Задание 3: вывести все элементы через while
+let i = 0
+while (i < numbers2.length) {
+    console.log('через while', numbers2[i])
+    i++
+}
+// Задание 4: вывести все элементы через do...while
+let k = 0
+do {
+    console.log('через do while', numbers2[k])
+    k++
+} while (k < numbers2.length)
