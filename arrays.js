@@ -196,7 +196,8 @@ console.log('Отрицательные индексы не соответств
 console.log('Для использования отрицательного индекса с ecma(2022) используется метод .at(-1)')
 
 console.log(' ')
-console.log('Задание 8 - Перебор масива через циклы')
+console.log('Практические задания с урока Перебор массивов')
+console.log('Задание 1 - Перебор масива через циклы')
 let numbers2 = [10, 20, 30, 40, 50];
 
 // Задание 1: вывести все элементы через for
@@ -222,7 +223,7 @@ do {
 } while (k < numbers2.length)
 
 console.log(' ')
-console.log('Задание 9 - индексы и значения')
+console.log('Задание 2 - индексы и значения')
 let fruits2 = ["apple", "banana", "cherry", "date"];
 
 // Вывести элементы массива и их индексы через цикл for
@@ -235,7 +236,7 @@ fruits2.forEach((value, index) => {
 })
 
 console.log(' ')
-console.log('Задание 10 - перебор объекта через for...in проверить с помощью hasOwnProperty')
+console.log('Задание 3 - перебор объекта через for...in проверить с помощью hasOwnProperty')
 let user = { name: "Alice", age: 25, city: "London" };
 
 // Вывести ключи и значения через for...in
@@ -246,7 +247,7 @@ for (const key in user) {
 // Проверить с помощью hasOwnProperty, что перебираются только собственные свойства
 
 console.log(' ')
-console.log('Задание 11 - вложенный массив')
+console.log('Задание 4 - вложенный массив')
 let matrix = [
     [1, 2, 3],
     [4, 5, 6],
@@ -268,7 +269,7 @@ for (let row of matrix) {
 }
 
 console.log(' ')
-console.log('Задание 12 - вложенный объект')
+console.log('Задание 5 - вложенный объект')
 let company = {
     name: "Acme",
     address: { city: "Riga", zip: "LV-1001" },
@@ -287,3 +288,39 @@ for (const key in company) {
 for (const element of company.employees) {
     console.log(`Перебрать employees через for...of, Сотрудник: ${element.name} Роль: ${element.role}`)
 }
+
+console.log(' ')
+console.log('Задание 6 - Массив объектов')
+let students = [
+    { name: "Tom", scores: [10, 20, 30] },
+    { name: "Jerry", scores: [15, 25, 35] }
+];
+
+// Используя циклы, вывести для каждого студента:
+// Имя студента и его оценки по порядку
+function studentsProfile(arr) {
+    for(let i = 0; i < arr.length; i++) {
+        const obj = arr[i]
+        for (const key in obj) {
+            if (!Object.hasOwn(obj, key)) continue;
+            console.log(`${key}: ${obj[key]}`)
+        }
+    }
+}
+
+studentsProfile(students)
+
+console.log(' ')
+console.log('Задание 7 - потеря контекста с массивами')
+let group = {
+    name: "Group1",
+    members: ["A", "B", "C"],
+    showMembers() {
+        this.members.forEach(member => {
+            console.log(this.name, member); // контекст потерян
+        });
+    }
+};
+console.log('исправлено стрелочной функцией')
+group.showMembers()
+// Исправить перебор с помощью стрелочной функции, чтобы выводилось имя группы и имя участника
