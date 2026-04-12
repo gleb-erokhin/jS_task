@@ -296,3 +296,18 @@ for(let key in students2) {
     countKey++
 }
 console.log(`средний бал студентов ${midleGrade / countKey}`)
+
+console.log(' ')
+console.log('Задача 12 - Фильтрация свойств объектов')
+console.log('вывести свойства в которые имеются числовые значения')
+const person = {
+    name: "Alice",
+    age: 25,
+    occupation: "developer",
+    salary: 5000
+};
+for(let key in person) {
+    if (!Number.isInteger(person[key])) {
+        console.log(`${key}: ${person[key]}`)
+    }
+}
