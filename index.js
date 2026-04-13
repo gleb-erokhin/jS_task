@@ -110,8 +110,8 @@ function saveTask() {
         completedDate: task.completedDate ? task.completedDate.getTime() : null
     }));
     localStorage.setItem('tasks', JSON.stringify(tasksToSave));
+    showTask(tasks)
 }
-// showTask(tasks)
 
 // clearTasks(tasks)
 setTask(1, 'Купить', 'хлебушка')
@@ -120,8 +120,8 @@ setTask(3, 'сварить', 'кофе')
 // setTask(4, 'сварить2', 'кофе2')
 
 
-// completeTask(3)
-// completeTask(2)
+completeTask(3)
+completeTask(2)
 // completeTask(1)
 
 console.log('')
