@@ -13,7 +13,6 @@ if (savedTasks) {
 }
 showTask(tasks)
 
-
 /**
  * пример задачи в массиве
  * const task = {
@@ -65,6 +64,7 @@ function deleteTask(id) {
 
 // показываем массив с задачами, в атрибуты передаем массив, как основной так и с выполнеными задачами, необязательный параметр нужен для изменения вывода в консоль при необходимости
 function showTask(arrays, name = 'Задача') {
+    console.clear()
     if (arrays.length === 0) {
         console.log("Состояние: Задачи отсутствуют")
         return
@@ -83,8 +83,9 @@ function showTask(arrays, name = 'Задача') {
 }
 
 // удалить все задачи
-function clearTasks(tasks) {
+function clearTasks() {
     tasks.length = 0
+    saveTask()
 }
 
 // добавить новую задачу
@@ -110,39 +111,12 @@ function saveTask() {
         completedDate: task.completedDate ? task.completedDate.getTime() : null
     }));
     localStorage.setItem('tasks', JSON.stringify(tasksToSave));
-    showTask(tasks)
 }
 
-// clearTasks(tasks)
-setTask(1, 'Купить', 'хлебушка')
-setTask(2, 'зарядка', 'в 7 утра3')
-setTask(3, 'сварить', 'кофе')
-// setTask(4, 'сварить2', 'кофе2')
-
-
-completeTask(3)
-completeTask(2)
-// completeTask(1)
-
-console.log('')
-console.log("Информация по всем задачам")
-
-console.log('')
-// раскоментировать чтобы очистить весь массив task, закоментировать delete, тогда он удалит все задачи
-
-console.log('')
-console.log('Завершенные задачи')
-showTask(tasks.filter(t => t.isCompleted), 'Задача завершена')
-
-
-console.log('')
-console.log('Выводим количество завершенных задач')
-console.log('completedTaskCount:', completedTaskCount)
-console.log('')
-
-// console.log('Удалить все задачи')
-// deleteTask(3)
-// deleteTask(2)
-// deleteTask(1)
-// deleteTask(1)
-
+console.log(' ')
+console.log('Создать задачу - setTask(id, "title", "descryption")')
+console.log('Выполнить задачу - completeTask(id)')
+console.log('Показать задачи - showTask(arrays)')
+console.log('Показать выполненые задачи - showTask(tasks.filter(t => t.isCompleted), "Задача завершена")')
+console.log('Удалить задачу - deleteTask(id)')
+console.log('Стереть все задачи - clearTasks(arrays)')
