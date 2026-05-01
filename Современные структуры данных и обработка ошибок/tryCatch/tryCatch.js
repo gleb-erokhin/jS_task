@@ -30,5 +30,6 @@ function parseJSON(jsonString) {
     }
     return string
 }
-console.log(parseJSON('{"name": "John", "age": 30}')); // Должно вывести объект и "Parsing completed"
-console.log(parseJSON('{name: John, age: 30}')); // Должно вывести "Invalid JSON format" и "Parsing completed"
+console.log(parseJSON('{"name": "John", "age": 30}')); // Должно вывести объект и "Parsing completed"
+console.log(parseJSON('{name: John, age: 30}')); // Должно вывести "Invalid JSON format" и "Parsing completed"
+
