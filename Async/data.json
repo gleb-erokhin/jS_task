@@ -1,0 +1,48 @@
+[{
+  "title": "Задача 1",
+  "description": "Прямой вызов кода, что будет в вызове",
+  "code": "console.log('A');\nconsole.log('B');\nconsole.log('C');"
+},
+{
+  "title": "Задача 2",
+  "description": "Какой порядок вызова в setTimeOut",
+  "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout 0'), 0);\nconsole.log('End');"
+},
+{
+  "title": "Задача 3",
+  "description": "Порядок вызова в консоль с promice",
+  "code": "console.log('Start');\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+},
+{
+  "title": "Задача 4",
+  "description": "Порядок вызова промис и setTimeout",
+  "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+},
+{
+  "title": "Задача ",
+  "description": "",
+  "code": ""
+},
+{
+  "title": "Задача ",
+  "description": "",
+  "code": ""
+},
+{
+  "title": "Задача ",
+  "description": "",
+  "code": ""
+},
+{
+  "title": "Задача ",
+  "description": "",
+  "code": ""
+},
+{
+  "title": "Задача ",
+  "description": "",
+  "code": ""
+}
+
+
+]
