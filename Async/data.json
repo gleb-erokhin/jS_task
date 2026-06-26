@@ -1,50 +1,60 @@
 [{
   "title": "Задача 1",
+  "output": "Ответ: A => B => C",
   "description": "Прямой вызов кода, что будет в вызове",
   "code": "console.log('A');\nconsole.log('B');\nconsole.log('C');"
 },
 {
   "title": "Задача 2",
+  "output": "Ответ: start => end => setTimeout",
   "description": "Какой порядок вызова в setTimeOut",
   "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout 0'), 0);\nconsole.log('End');"
 },
 {
   "title": "Задача 3",
+  "output": "Ответ: start => end => Promise",
   "description": "Порядок вызова в консоль с promice",
   "code": "console.log('Start');\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
 },
 {
   "title": "Задача 4",
+  "output": "Ответ: start => end => Promise => Timeout",
   "description": "Порядок вызова промис и setTimeout",
   "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
 },
 {
   "title": "Задача 5",
+  "output": "Ответ:  start => end => Microtask 1 => Microtask 2 => Microtask 3",
   "description": "несколько микротасок",
   "code": "console.log('Start');\nqueueMicrotask(() => console.log('Microtask 1'));\nPromise.resolve().then(() => console.log('Microtask 2'));\nqueueMicrotask(() => console.log('Microtask 3'));console.log('End');"
 },
 {
   "title": "Задача 6",
+  "output": "Ответ: start => end => Timeout 1 => Timeout 2",
   "description": "несколько макротасок",
   "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout 1'), 0);\nsetTimeout(() => console.log('Timeout 2'), 0);\nconsole.log('End');"
 },
 {
   "title": "Задача 7",
+  "output": "Ответ: start => end => promis1 => promis2 => Microtask inside Promis",
   "description": "Микротаски, внутри микротаски",
   "code": "console.log('Start');\nPromise.resolve().then(() => {console.log('Promise 1');\nqueueMicrotask(() => console.log('Microtask inside Promise'));});\nPromise.resolve().then(() => console.log('Promise 2'));\nconsole.log('End');"
 },
 {
   "title": "Задача 8",
+  "output": "Ответ: start => end => timeOut 1 => promise inside TimeOut",
   "description": "макротаска с микротаской внутри",
   "code": "console.log('Start');\nsetTimeout(() => {console.log('Timeout 1');\nPromise.resolve().then(() => console.log('Promise inside Timeout'));}, 0);\nconsole.log('End');"
 },
 {
   "title": "Задача 9",
+  "output": "Ответ: start => Async 1 => end => Async 2",
   "description": "какой порядок вывода acync/await",
   "code": "console.log('Start');\nasync function asyncFunc() {console.log('Async 1');\nawait null;\nconsole.log('Async 2');}\nasyncFunc();\nconsole.log('End');"
 },
 {
   "title": "Задача 10",
+  "output": "Ответ: Script start => Script end => promise 1 => queueMicrotask => promise 2 => setTimeout",
   "description": "пример setTimout Promice Microtask какой порядок вывода",
   "code": "console.log('Script start');\nsetTimeout(() => console.log('setTimeout'), 0);\nPromise.resolve().then(() => console.log('Promise 1')).then(() => console.log('Promise 2'));\nqueueMicrotask(() => console.log('queueMicrotask'));\nconsole.log('Script end');"
 },

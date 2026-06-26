@@ -27,6 +27,7 @@ container.addEventListener('click', function (e) {
         <h2>${resData.title}</h2>
         <p>${resData.description}</p>
         <pre>${resData.code}</pre>
+        <p>${resData.output}</p>
         `
     } else {
         render.innerHTML = `<p>Идет загрузка..</p>`
