@@ -95,18 +95,72 @@ export const task_10 = function () {
 
     console.log('Script end');
 }
-// const task_ = function () {
+export const task_11 = function () {
+    console.log(`выполнение начинается с синхронного кода, выведет start почле чего родительский setTimeout уйдет в web API ожидать время, после чего выполнится синхронный код end. После истечения времени родительский setTimeout переходит в МАКРОТАСКИ, так как КОЛЛСТЕК пустой колбек родительского setTimeout запускается и выводит Timeout 1, после чего вложенный setTimeout опять уходит в web API, после чего в макротаку и после освоождения КОЛЛСТЕК запускается и выводит Timeout 2`)
+    console.log('Start');
 
-// }
-// const task_ = function () {
+    setTimeout(() => {
+        console.log('Timeout 1');
+        setTimeout(() => console.log('Timeout 2'), 0);
+    }, 0);
 
-// }
-// const task_ = function () {
+    console.log('End');
+}
+export const task_12 = function () {
+    console.log(`Первым выполнится start, после queueMicrotask переведет КОЛЛБЕК в МИКРОТАСКИ, далее в КОЛЛСТЕК попадет setTimeout и сразу передет в ВЕБ АПИ ожитать таймер, после чего в СТЕК попадет промис, так как он записан через resolve он выполнится сразу и then перейдет в МИКРОТАСКИ на 2 позицию. после чего выполнится синхронный код end. После очситки КОЛЛСТЕК цикл событий увидит что в МИКРОТАСКИ чтото есть и возьмет первый queueMicrotask и выведет Microtask 1, затем выведется промис Promise 1, далее из МАКРОТАСКИ выйдет КОЛЛБЕК setTimeout и выведет Timeout 1, далее будет зарегистрирован queueMicrotask вложенный и перемещет в МИКРОТАСКИ, так как КАЛЛСТЕК пустой он будет сразу выполнен и выведет Microtask inside Timeout`)
+    console.log('Start');
 
-// }
-// const task_ = function () {
+    queueMicrotask(() => console.log('Microtask 1'));
 
-// }
-// const task_ = function () {
+    setTimeout(() => {
+        console.log('Timeout 1');
+        queueMicrotask(() => console.log('Microtask inside Timeout'));
+    }, 0);
 
-// }
+    Promise.resolve().then(() => console.log('Promise 1'));
+
+    console.log('End');
+}
+export const task_13 = function () {
+    console.log(`выполнится синхронный код start, затем функция f() бедет зарегистрирована но пропущена до ее вызова. При вызове функция f() попадает в КОЛЛСТЕК, выводится Async 1, после чего await приостанавливает работу промис, и далее в вывод попадает end, далее функция продлжает работу и выводит Async 2, после выполняется setTimeout переходит в web API ожидать время, после чего переходит в МАКРОТАСКУ, выводится Timeout`)
+    console.log('Start');
+
+    async function f() {
+        console.log('Async 1');
+        await Promise.resolve();
+        console.log('Async 2');
+    }
+
+    f();
+
+    setTimeout(() => console.log('Timeout'), 0);
+
+    console.log('End');
+}
+export const task_14 = function () {
+    console.log(`в вывод попадает синхронный код выведется start, промис выполняется немедленно и переносится весь then в МИКРОТАСКИ, Далее выполняется синхронный код и выводится end. из МИКРОТАСОК выводится промис и попадает в КОЛЛСТЕК выполняется первый then и выводится Promise 1, после выполнения КОЛЛСТЕК очищается и цикл событий видит что есть еще then берет его и помещает его КОЛБЕК в МИКРОТАСКУ, после проверки что КОЛСТЕК пустой код выводится из МИКРОТАСКИ и выполняется Promise 2, далее queueMicrotask попадает в МИКРОТАСКИ и после очистки КООЛСТЕК выводится Microtask inside Promise 2`)
+    console.log('Start');
+
+    Promise.resolve().then(() => console.log('Promise 1'))
+        .then(() => {
+            console.log('Promise 2');
+            queueMicrotask(() => console.log('Microtask inside Promise 2'));
+        });
+
+    console.log('End');
+}
+export const task_15 = function () {
+    console.log(`выполнится синхронный код start, далее первый setTimout переходит в web API, после туда же уходит второй setTimout, в КОЛЛСТЕК попадает промис и переносится в МИКРОТАСКУ, следом в МИКРОТАСКУ переходит queueMicrotask, после чего выполняется синхронный код end. Далее цикл событий видит что в МИКРОТАСКЕ есть код, первым выводится промис Promise 1, далее queueMicrotask выводит Microtask 1. После очистки КОЛЛСТЕК в него попадает первый setTimeout из МАКРОТАСКИ и выводится Timeout 1, далее второй setTimeout и вводится Timeout 2, Промис попадая в КОЛСТЕК следом переносится в МИКРОТАСКИ, цикл событий проверяет что очередь пуста и выполняет вложенный КОЛЛБЕК от промиса и выводит Promise inside Timeout 2`)
+    console.log('Start');
+
+    setTimeout(() => console.log('Timeout 1'), 0);
+    setTimeout(() => {
+        console.log('Timeout 2');
+        Promise.resolve().then(() => console.log('Promise inside Timeout 2'));
+    }, 0);
+
+    Promise.resolve().then(() => console.log('Promise 1'));
+    queueMicrotask(() => console.log('Microtask 1'));
+
+    console.log('End');
+}

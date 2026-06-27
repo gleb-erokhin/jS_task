@@ -56,28 +56,36 @@
   "title": "Задача 10",
   "output": "Ответ: Script start => Script end => promise 1 => queueMicrotask => promise 2 => setTimeout",
   "description": "пример setTimout Promice Microtask какой порядок вывода",
-  "code": "console.log('Script start');\nsetTimeout(() => console.log('setTimeout'), 0);\nPromise.resolve().then(() => console.log('Promise 1')).then(() => console.log('Promise 2'));\nqueueMicrotask(() => console.log('queueMicrotask'));\nconsole.log('Script end');"
+  "code": "console.log('Script start');\nsetTimeout(() => console.log('setTimeout'), 0);\nPromise.resolve()\n\t.then(() => console.log('Promise 1'))\n\t.then(() => console.log('Promise 2'));\nqueueMicrotask(() => console.log('queueMicrotask'));\nconsole.log('Script end');"
 },
 {
-  "title": "Задача ",
-  "description": "",
-  "code": ""
+  "title": "Задача 11",
+  "output": "Ответ: Start => end => Timeout 1 => Timeout 2",
+  "description": "Вложенные setTimout",
+  "code": "console.log('Start');\nsetTimeout(() => {\n\tconsole.log('Timeout 1');\n\tsetTimeout(() => console.log('Timeout 2'), 0);}, 0);\nconsole.log('End');"
 },
 {
-  "title": "Задача ",
-  "description": "",
-  "code": ""
+  "title": "Задача 12",
+  "output": "Ответ: start => end = > Microtask 1 => Promise 1 => Timeout 1 => Microtask inside Timeout",
+  "description": "Микротакска внутри макротаски + микротаски",
+  "code": "console.log('Start');\nqueueMicrotask(() => console.log('Microtask 1'));\nsetTimeout(() => {\n\tconsole.log('Timeout 1'); \n\tqueueMicrotask(() => console.log('Microtask inside Timeout'));}, 0);\nPromise.resolve().then(() => console.log('Promise 1'));\nconsole.log('End');"
 },
 {
-  "title": "Задача ",
-  "description": "",
-  "code": ""
+  "title": "Задача 13",
+  "output": "Ответ: start => Async 1 => end => Async 2 => Timeout",
+  "description": "async / await + setTimout",
+  "code": "console.log('Start');\nasync function f() {\n\tconsole.log('Async 1');\n\tawait Promise.resolve();\n\tconsole.log('Async 2');}\nf();\nsetTimeout(() => console.log('Timeout'), 0);\nconsole.log('End');"
 },
 {
-  "title": "Задача ",
-  "description": "",
-  "code": ""
+  "title": "Задача 14",
+  "output": "Ответ: start => end => Promise 1 => Promise 2 => Microtask inside Promise 2",
+  "description": "Цепочка промисов и микротаски",
+  "code": "console.log('Start');\nPromise.resolve().then(() => console.log('Promise 1'))\n\t.then(() => {\n\t\tconsole.log('Promise 2');\n\t\tqueueMicrotask(() => console.log('Microtask \n\t\tinside Promise 2'));\n\t\t});\nconsole.log('End');"
+},
+{
+  "title": "Задача 15",
+  "output": "Ответ: start => end => Promise 1 => Microtask 1 => Timeout 1 => Timeout 2 => Promise inside Timeout 2",
+  "description": "комбинация промисов и таймаутов",
+  "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout 1'), 0);\nsetTimeout(() => {\n\tconsole.log('Timeout 2');\n\tPromise.resolve().then(() => console.log('Promise inside Timeout 2'));}, 0);\nPromise.resolve().then(() => console.log('Promise 1'));\nqueueMicrotask(() => console.log('Microtask 1'));\nconsole.log('End');"
 }
-
-
 ]
