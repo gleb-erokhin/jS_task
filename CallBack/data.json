@@ -42,7 +42,7 @@
 },
 {
   "title": "Задача 8",
-  "output": "Ответ: ",
+  "output": "Ответ: A 1 A 2 B 1 B 2",
   "description": "несколько map",
   "code": "const nums = [1, 2];\nnums.map(n => {\n\tconsole.log(`A`, n);\n\treturn n;\n}).map(n =>{\n\tconsole.log(`B`, n);});"
 },
