@@ -1,0 +1,61 @@
+[{
+  "title": "Задача 1",
+  "output": "Ответ: A => C => B",
+  "description": "синхронный колбек",
+  "code": "console.log('A');\nconsole.log('B');\nconsole.log('C');"
+},
+{
+  "title": "Задача 2",
+  "output": "Ответ: 1 2 3 [2, 4, 6]",
+  "description": "map с колбеком",
+  "code": "const arr = [1, 2, 3];\nconst result = arr.map(n => {\n\tconsole.log(n);\n\treturn n * 2;});\nconsole.log(result);"
+},
+{
+  "title": "Задача 3",
+  "output": "Ответ: start => end => Timeout",
+  "description": "setTimeout",
+  "code": "console.log(`Start`);\nsetTimeout(() => {\n\tconsole.log(`Timeout`);}, 0);\nconsole.log(`End`);"
+},
+{
+  "title": "Задача 4",
+  "output": "Ответ: D => B => C => A",
+  "description": "несколько таймеров",
+  "code": "console.log('Start');\nsetTimeout(() => console.log('Timeout'), 0);\nPromise.resolve().then(() => console.log('Promise'));\nconsole.log('End');"
+},
+{
+  "title": "Задача 5",
+  "output": "Ответ: Loading... => Continue => Done",
+  "description": "Колбек внутри функции",
+  "code": "function load(cb) {\n\tconsole.log(`Loading...`);\n\tsetTimeout(() => {\n\t\tcb()\n\t;},1000);\n}\nload(() => {\n\tconsole.log(`Done`);\n});\nconsole.log(`Continue`);"
+},
+{
+  "title": "Задача 6",
+  "output": "Ответ: start => First => Second",
+  "description": "вложенные колбеки",
+  "code": "setTimeout(() => {\n\tconsole.log(`first`);\n\tsetTimeout(() => {\n\t\tconsole.log(`Second`);\n\t}, 500);\n}, 500);\nconsole.log(`Start`);"
+},
+{
+  "title": "Задача 7",
+  "output": "Ответ: Run => End = Later",
+  "description": "синхронный + асинхронный",
+  "code": "function run(cb) {\n\tconsole.log(`Run`);\n\tcb();\n}\nrun(() => {\n\tsetTimeout(() => {\n\t\tconsole.log(`Later`);\n\t}, 0);\n});\nconsole.log(`End`);"
+},
+{
+  "title": "Задача 8",
+  "output": "Ответ: ",
+  "description": "несколько map",
+  "code": "const nums = [1, 2];\nnums.map(n => {\n\tconsole.log(`A`, n);\n\treturn n;\n}).map(n =>{\n\tconsole.log(`B`, n);});"
+},
+{
+  "title": "Задача 9",
+  "output": "Ответ: 10",
+  "description": "callback + переменная",
+  "code": "let x = 5;\nfunction test(cb) {\n\tx = 10;\n\tcb();\n}\ntest(() => {\n\tconsole.log(x);\n});"
+},
+{
+  "title": "Задача 10",
+  "output": "Ответ: ",
+  "description": "",
+  "code": ""
+}
+]
