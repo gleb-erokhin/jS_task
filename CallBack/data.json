@@ -54,8 +54,8 @@
 },
 {
   "title": "Задача 10",
-  "output": "Ответ: ",
-  "description": "",
-  "code": ""
+  "output": "Ответ: Send => Wait => Data",
+  "description": "Псевдо запрос",
+  "code": "function fetch(cb) {\n\tsetTimeout(() => {\n\t\tcb(`Data`);\n\t}, 500);\n}\nconsole.log(`Send`);\nfetch(data => {\n\tconsole.log(data);\n});\nconsole.log(`Wait`);"
 }
 ]

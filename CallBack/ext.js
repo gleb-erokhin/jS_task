@@ -107,6 +107,19 @@ export const task_9 = function () {
         console.log(x);
     });
 }
-// export const task_10 = function () {
+export const task_10 = function () {
+    console.log(`функция fetch ожидает вызова, далее выполняется синхронный код и выводится Send, после происходит запуск функции fetch с аргументом в виде КОЛБЕК функции. Функция fetch попадает в КОЛСТЕК и setTimeout переходит в web api для ожидания таймера. общий ход выполнения продолжается и мы выводим Wait почле чего из МАКРОТАСКИ выводится КОЛБЕК setTimeout и запускается вложенная функция с атрибутом и выводится Data`)
+    function fetch(cb) {
+        setTimeout(() => {
+            cb("Data");
+        }, 500);
+    }
 
-// }
+    console.log("Send");
+
+    fetch(data => {
+        console.log(data);
+    });
+
+    console.log("Wait");
+}
