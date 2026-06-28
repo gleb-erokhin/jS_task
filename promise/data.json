@@ -1,0 +1,61 @@
+[{
+  "title": "Задача 1",
+  "output": "Ответ: Hello ",
+  "description": "Простой промис",
+  "code": "const p = new Promise(resolve => {\n\tresolve(`Hello`);});\np.then(result => console.log(result));"
+},
+{
+  "title": "Задача 2",
+  "output": "Ответ: start => end => Done",
+  "description": "Асинхронный промис - в каком порядке будет вывод сообщений",
+  "code": "console.log(`start`;\nconst p = new Promise(resolve => {\n\tsetTimeout(() => {\n\t\tresolve(`done`);\n\t}, 1000);\n});\np.then(res => console.log(res));\nconsole.log(`end`);"
+},
+{
+  "title": "Задача 3",
+  "output": "Ответ: 4",
+  "description": "цепочка then",
+  "code": "Promise.resolve(1)\n\t.then(n => n + 1)\n\t.then(n => n * 2)\n\t.then(n => console.log(n));"
+},
+{
+  "title": "Задача 4",
+  "output": "Ответ: первый then даст 10, второй 15",
+  "description": "возврат значения",
+  "code": "Promise.resolve(10) \n.then(n => {\n\tconsole.log(n);\n\treturn n + 5;\n})\n.then(n => console.log(n));"
+},
+{
+  "title": "Задача 5",
+  "output": "Ответ: ok",
+  "description": "возврат промис",
+  "code": "function wait() {\nreturn new Promise(resolve => {\n\tsetTimeout(() => resolve(`ok`), 500);\n});\n}\nPromise.resolve()\n\t.then(() => wait())\n\t.then(res => console.log(res));"
+},
+{
+  "title": "Задача 6",
+  "output": "Ответ: strat => Error: Fail",
+  "description": "ошибка then",
+  "code": "Promise.resolve(`Start`)\n\t.then(msg => {\n\t\tconsole.log(msg);\n\t\tthrow new Error(`Fail`);\n\t})\n\t.then(() => console.log(`Next`))\n\t.catch(err => console.log(`Error:`, err.message));"
+},
+{
+  "title": "Задача 7",
+  "output": "Ответ: => Problem",
+  "description": "reject",
+  "code": "const p = new Promise((resolve, reject) => {\n\treject(`Problem`);\n});\np.then(res => console.log(res))\n\t.catch(err => console.log(err));"
+},
+{
+  "title": "Задача 8",
+  "output": "Ответ: Caught 10",
+  "description": "catch в середине",
+  "code": "Promise.resolve(5)\n\t.then(n => {\n\t\tthrow new Error(`Oops`);\n\t})\n\t.catch(err => {\n\t\tconsole.log(`Caught`);\n\t\treturn 10;\n\t})\n\t.then(n => console.log(n));"
+},
+{
+  "title": "Задача 9",
+  "output": "Ответ: 2 => undefined",
+  "description": "несколько then без return",
+  "code": "Promise.resolve(2)\n\t.then(n => {\n\t\tconsole.log(n);\n\t})\n\t.then(n => {\n\t\tconsole.log(n);\n\t});"
+},
+{
+  "title": "Задача 10",
+  "output": "Ответ: 4",
+  "description": "",
+  "code": "function step(n) {\nreturn new Promise(resolve => {\n\t\tsetTimeout(() => resolve(n + 1), 500);\n});\n}\nstep(1)\n\t.then(step)\n\t.then(step)\n\t.then(result => console.log(result));"
+}
+]
